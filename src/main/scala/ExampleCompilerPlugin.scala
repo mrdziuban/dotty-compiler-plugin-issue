@@ -7,9 +7,9 @@ class ExampleCompilerPlugin extends StandardPlugin { self =>
   val name = "example"
   val description = name
 
-  override def init(opts: List[String]): List[PluginPhase] = List(phase)
+  override def init(opts: List[String]): List[PluginPhase] = List(Phase())
 
-  object phase extends PluginPhase {
+  class Phase extends PluginPhase {
     override val phaseName = self.name
     override val runsAfter = Set("typer")
 
