@@ -1,6 +1,5 @@
 package com.example
 
-import dotty.tools.dotc.core.Contexts.Context
 import dotty.tools.dotc.plugins.{PluginPhase, StandardPlugin}
 
 class ExampleCompilerPlugin extends StandardPlugin { self =>
@@ -11,11 +10,7 @@ class ExampleCompilerPlugin extends StandardPlugin { self =>
 
   class Phase extends PluginPhase {
     override val phaseName = self.name
-    override val runsAfter = Set("typer")
-
-    override def run(using Context): Unit = {
-      println(s"********* running example compiler plugin")
-      super.run
-    }
+    override val runsAfter = Set("parser")
+    override val runsBefore = Set("typer")
   }
 }
